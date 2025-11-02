@@ -2,6 +2,9 @@
   <h1>QR Code Generator</h1>
 
   <input [(ngModel)]="inputText" placeholder="Enter text or URL" style="padding: 10px; width: 300px;">
+  <label style="margin-left: 10px;">
+    <input type="checkbox" [(ngModel)]="usePython"> Use Python Service
+  </label>
   <button (click)="generateQR()" style="margin-left:10px; padding:10px 20px;">Generate</button>
 
   <div *ngIf="qrImage" style="margin-top:30px;">
@@ -9,7 +12,6 @@
     <img [src]="qrImage" alt="QR Code" width="200" height="200">
   </div>
 </div>
-
 
 
 <router-outlet />

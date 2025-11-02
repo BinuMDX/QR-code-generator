@@ -10,8 +10,9 @@ import { QrService } from './services/qr';
 export class App {
   inputText = '';
   qrImage: string | null = null;
+  usePython = false;
 
-  constructor(private qrService: QrService) {}
+  constructor(private qrService: QrService) { }
 
   generateQR() {
     if (!this.inputText.trim()) {
@@ -19,7 +20,8 @@ export class App {
       return;
     }
 
-    this.qrService.generateQR(this.inputText).subscribe({
+
+    this.qrService.generateQR(this.inputText, this.usePython).subscribe({
       next: (res) => {
         this.qrImage = res.image;
       },

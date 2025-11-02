@@ -11,7 +11,7 @@ export class QrService {
 
   constructor(private http: HttpClient) { }
 
-  generateQR(data: string): Observable<any> {
-    return this.http.post(this.apiUrl, { data });
-  }
+  generateQR(data: string, usePython: boolean = false): Observable<any> {
+  return this.http.post(this.apiUrl, { data, usePython });
+}
 }
