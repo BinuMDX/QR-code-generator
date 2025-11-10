@@ -4,6 +4,7 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http'; 
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -14,10 +15,11 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    provideHttpClient(withFetch()),
     provideZonelessChangeDetection(),
     provideClientHydration(withEventReplay())
   ],
