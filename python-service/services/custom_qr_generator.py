@@ -34,19 +34,24 @@ class CustomQRGenerator(SimpleQRGenerator):
         img = Image.new('RGBA', (img_size, img_size), self.back_color)
         draw = ImageDraw.Draw(img)
 
-        #  Draw modules (dots)
-        for r in range(qr_size):
-            for c in range(qr_size):
-                if matrix[r][c]:
-                    x = (c + border) * box_size
-                    y = (r + border) * box_size
-                    if self.dot_style == 'circle':
-                        draw.ellipse([x, y, x + box_size, y + box_size], fill=self.fill_color)
-                    elif self.dot_style == 'rounded':
+       # --- Draw modules (dots) ---
+        for row in range(qr_size):
+            for col in range(qr_size):
+                if matrix[row][col]:
+                    x0 = (col + border) * box_size
+                    y0 = (row + border) * box_size
+                    x1 = x0 + box_size
+                    y1 = y0 + box_size
+
+                    if self.dot_style == "circle":
+                        draw.ellipse([x0, y0, x1, y1], fill=self.fill_color)
+                    elif self.dot_style == "rounded":
                         radius = box_size // 3
-                        draw.rounded_rectangle([x, y, x + box_size, y + box_size], radius=radius, fill=self.fill_color)
-                    else:
-                        draw.rectangle([x, y, x + box_size, y + box_size], fill=self.fill_color)
+                        draw.rounded_rectangle([x0, y0, x1, y1],
+                                            radius=radius,
+                                            fill=self.fill_color)
+                    else:  # default square
+                        draw.rectangle([x0, y0, x1, y1], fill=self.fill_color)
 
 
         # 🧩 Add logo
