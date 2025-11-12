@@ -1,36 +1,7 @@
 <div style="text-align:center; margin-top:50px">
   <h1>Custom QR Code Generator</h1>
+  <app-qr-generator/>
 
-  <input [(ngModel)]="inputText" placeholder="Enter text or URL" style="padding: 10px; width: 300px;"><br><br>
-
-  <label>Foreground:</label>
-  <input type="color" [(ngModel)]="fillColor"><br><br>
-
-  <label>Background:</label>
-  <input type="color" [(ngModel)]="backColor"><br><br>
-
-  <label>Dot Style:</label>
-  <select [(ngModel)]="dotStyle">
-    <option value="square">Square</option>
-    <option value="circle">Circle</option>
-  </select><br><br>
-
-  <label>Frame Text:</label>
-  <input [(ngModel)]="frameText" placeholder="e.g., Scan Me!" style="padding: 10px; width: 200px;"><br><br>
-
-  <label>Frame Color:</label>
-  <input type="color" [(ngModel)]="frameColor"><br><br>
-
-  <label>Upload Logo:</label>
-  <input type="file" (change)="onFileSelected($event)" accept="image/*"><br><br>
-  <label><input type="checkbox" [(ngModel)]="usePython"> Use Python Service</label><br><br>
-
-  <button (click)="generateQR()" style="padding:10px 20px;">Generate</button>
-
-  <div *ngIf="qrImage" style="margin-top:30px;">
-    <h3>Your QR Code:</h3>
-    <img [src]="qrImage" alt="QR Code" width="200" height="200">
-  </div>
 </div>
 
 

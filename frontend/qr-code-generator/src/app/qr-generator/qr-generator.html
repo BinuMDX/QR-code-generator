@@ -1,0 +1,48 @@
+<div class="qr-generator">
+  <h2>QR Code Generator</h2>
+
+  <div class="form-group">
+    <label>Enter Text or URL:</label>
+    <input [(ngModel)]="data" placeholder="Enter text or link..." />
+  </div>
+
+  <div class="form-group">
+    <label>Foreground Color:</label>
+    <input type="color" [(ngModel)]="options.fill_color" />
+    <label>Background Color:</label>
+    <input type="color" [(ngModel)]="options.back_color" />
+  </div>
+
+  <div class="form-group">
+    <label>Dot Style:</label>
+    <select [(ngModel)]="options.dot_style">
+      <option value="square">Square</option>
+      <option value="circle">Circle</option>
+      <option value="rounded">Rounded</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Frame Text:</label>
+    <input [(ngModel)]="options.frame_text" placeholder="e.g., Scan Me!" />
+    <label>Frame Color:</label>
+    <input type="color" [(ngModel)]="options.frame_color" />
+  </div>
+
+  <div class="form-group">
+    <label>Upload Logo:</label>
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
+
+  <div class="form-group">
+    <label>Use Python Microservice:</label>
+    <input type="checkbox" [(ngModel)]="usePython" />
+  </div>
+
+  <button (click)="generateQr()">Generate QR Code</button>
+
+  <div *ngIf="qrImage" class="qr-preview">
+    <h3>Generated QR Code:</h3>
+    <img [src]="qrImage" alt="QR Code" />
+  </div>
+</div>
