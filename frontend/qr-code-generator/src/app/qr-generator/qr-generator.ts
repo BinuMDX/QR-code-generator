@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { QROptions } from '../models/qr-options';
 import { QrService } from '../services/qr';
 import { History } from '../services/history';
+import { FileUtils } from '../utils/file-utils';
 
 @Component({
   selector: 'app-qr-generator',
@@ -54,5 +55,15 @@ export class QRGenerator {
         },
       });
   }
+
+ 
+
+download(type: string) {
+  if (!this.qrImage) return;
+  if (type === 'png') FileUtils.downloadBase64Image(this.qrImage, 'qr-code.png');
+  else if (type === 'svg') FileUtils.exportAsSVG(this.qrImage);
+  else if (type === 'pdf') FileUtils.exportAsPDF(this.qrImage);
+}
+
 
 }

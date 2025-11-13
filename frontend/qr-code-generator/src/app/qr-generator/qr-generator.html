@@ -45,5 +45,14 @@
     <h3>Generated QR Code:</h3>
     <img [src]="qrImage" alt="QR Code" />
   </div>
+
+  <br><br>
+
+   <div *ngIf="qrImage" class="download-buttons">
+  <button (click)="download('png')">Download PNG</button>
+  <button (click)="download('svg')">Export SVG</button>
+  <button (click)="download('pdf')">Export PDF</button>
+  </div>
+
 </div>
 <app-qr-history></app-qr-history>
