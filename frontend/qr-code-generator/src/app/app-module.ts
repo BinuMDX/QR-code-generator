@@ -7,11 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient, withFetch } from '@angular/common/http'; 
 import { FormsModule } from '@angular/forms';
 import { QRGenerator } from './qr-generator/qr-generator';
+import { QRHistory } from './qr-history/qr-history';
+import { QRPreview } from './qr-preview/qr-preview';
 
 @NgModule({
   declarations: [
     App,
-    QRGenerator
+    QRGenerator,
+    QRHistory,
+    QRPreview
   ],
   imports: [
     BrowserModule,

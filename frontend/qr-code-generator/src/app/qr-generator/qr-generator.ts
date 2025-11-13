@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { QROptions } from '../models/qr-options';
 import { QrService } from '../services/qr';
+import { History } from '../services/history';
 
 @Component({
   selector: 'app-qr-generator',
@@ -21,8 +22,9 @@ export class QRGenerator {
     frame_text: '',
     frame_color: '#000000',
   };
+  history: any;
 
-  constructor(private qrService: QrService) {}
+  constructor(private qrService: QrService,  private historyService: History) {}
 
   onFileSelected(event: any) {
     this.logoFile = event.target.files[0];
@@ -39,6 +41,12 @@ export class QRGenerator {
       .subscribe({
         next: (res) => {
           this.qrImage = res.image;
+          this.historyService.addToHistory({
+          data: this.data,
+          options: this.options,
+          image: res.image,
+        });
+          
         },
         error: (err) => {
           console.error('QR generation failed', err);

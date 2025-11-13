@@ -1,0 +1,13 @@
+<div class="qr-history">
+  <h3>QR History</h3>
+
+  <div *ngIf="history.length === 0">No history yet.</div>
+
+  <div *ngFor="let item of history">
+    <img [src]="item.image" width="100" />
+    <p>{{ item.data }}</p>
+    <small>{{ item.timestamp | date: 'short' }}</small>
+  </div>
+
+  <button (click)="clearHistory()">Clear History</button>
+</div>
