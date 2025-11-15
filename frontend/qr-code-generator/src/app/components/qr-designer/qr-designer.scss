@@ -1,0 +1,16 @@
+.designer-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  width: fit-content;
+}
+
+canvas {
+  cursor: move;
+}

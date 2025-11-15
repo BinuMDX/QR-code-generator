@@ -1,0 +1,17 @@
+<div class="designer-container">
+  <h3>Design Your QR Template</h3>
+
+  <label>Select Template:</label>
+  <select (change)="onTemplateSelect($event)">
+    <option *ngFor="let t of templates" [value]="t.id">{{ t.name }}</option>
+  </select>
+
+  <div class="canvas-wrapper">
+    <canvas id="designCanvas"></canvas>
+  </div>
+
+  <div class="actions">
+    <button (click)="exportDesign('png')">Download PNG</button>
+    <button (click)="exportDesign('pdf')">Export PDF</button>
+  </div>
+</div>

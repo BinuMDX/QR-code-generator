@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { History } from '../services/history';
+import { History } from '../../services/history';
 
 @Component({
   selector: 'app-qr-history',

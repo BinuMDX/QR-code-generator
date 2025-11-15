@@ -6,16 +6,18 @@ import { App } from './app';
 import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient, withFetch } from '@angular/common/http'; 
 import { FormsModule } from '@angular/forms';
-import { QRGenerator } from './qr-generator/qr-generator';
-import { QRHistory } from './qr-history/qr-history';
-import { QRPreview } from './qr-preview/qr-preview';
+import { QRGenerator } from './components/qr-generator/qr-generator';
+import { QRHistory } from './components/qr-history/qr-history';
+import { QRPreview } from './components/qr-preview/qr-preview';
+import { QRDesigner } from './components/qr-designer/qr-designer';
 
 @NgModule({
   declarations: [
     App,
     QRGenerator,
     QRHistory,
-    QRPreview
+    QRPreview,
+    QRDesigner
   ],
   imports: [
     BrowserModule,

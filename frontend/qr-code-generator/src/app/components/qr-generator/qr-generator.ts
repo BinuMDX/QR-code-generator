@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { QROptions } from '../models/qr-options';
-import { QrService } from '../services/qr';
-import { History } from '../services/history';
-import { FileUtils } from '../utils/file-utils';
+import { QROptions } from '../../models/qr-options';
+import { QrService } from '../../services/qr';
+import { History } from '../../services/history';
+import { FileUtils } from '../../utils/file-utils';
 
 @Component({
   selector: 'app-qr-generator',
