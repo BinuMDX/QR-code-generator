@@ -1,42 +1,31 @@
-<div class="max-w-4xl mx-auto py-12 px-6">
+<div class="max-w-6xl mx-auto py-12 px-6 grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-  <!-- Title -->
-  <h2 class="text-3xl font-semibold mb-10 text-center">QR Code Generator</h2>
-
-  <!-- Card Container -->
+  <!-- LEFT: Form -->
   <div class="bg-white shadow-lg rounded-2xl p-8 space-y-8 border border-gray-200">
+    
+    <h2 class="text-3xl font-semibold mb-6">QR Code Generator</h2>
 
-    <!-- Text / URL input -->
+    <!-- Text Input -->
     <div>
       <label class="block font-medium mb-2">Enter Text or URL</label>
       <input
         [(ngModel)]="data"
         placeholder="Enter text or link..."
-        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:outline-none"
+        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black"
       />
     </div>
 
     <!-- Colors -->
     <div class="grid grid-cols-2 gap-6">
-
       <div>
         <label class="block font-medium mb-2">Foreground Color</label>
-        <input
-          type="color"
-          [(ngModel)]="options.fill_color"
-          class="w-full h-12 border border-gray-300 rounded-xl cursor-pointer"
-        />
+        <input type="color" [(ngModel)]="options.fill_color" class="h-12 w-full border border-gray-300 rounded-xl" />
       </div>
 
       <div>
         <label class="block font-medium mb-2">Background Color</label>
-        <input
-          type="color"
-          [(ngModel)]="options.back_color"
-          class="w-full h-12 border border-gray-300 rounded-xl cursor-pointer"
-        />
+        <input type="color" [(ngModel)]="options.back_color" class="h-12 w-full border border-gray-300 rounded-xl" />
       </div>
-
     </div>
 
     <!-- Dot Style -->
@@ -52,46 +41,36 @@
       </select>
     </div>
 
-    <!-- Frame Options -->
+    <!-- Frame -->
     <div class="grid grid-cols-2 gap-6">
-
       <div>
         <label class="block font-medium mb-2">Frame Text</label>
         <input
           [(ngModel)]="options.frame_text"
-          placeholder="e.g., Scan Me!"
+          placeholder="Scan Me!"
           class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-black"
         />
       </div>
 
       <div>
         <label class="block font-medium mb-2">Frame Color</label>
-        <input
-          type="color"
-          [(ngModel)]="options.frame_color"
-          class="w-full h-12 border border-gray-300 rounded-xl cursor-pointer"
-        />
+        <input type="color" [(ngModel)]="options.frame_color" class="h-12 w-full border border-gray-300 rounded-xl" />
       </div>
-
     </div>
 
-    <!-- Logo Upload -->
+    <!-- Logo -->
     <div>
       <label class="block font-medium mb-2">Upload Logo</label>
-      <input
-        type="file"
-        (change)="onFileSelected($event)"
-        class="w-full px-3 py-2 border border-gray-300 rounded-xl cursor-pointer"
-      />
+      <input type="file" (change)="onFileSelected($event)" class="w-full text-sm" />
     </div>
 
-    <!-- Python Microservice Toggle -->
+    <!-- Python Toggle -->
     <div class="flex items-center gap-3">
       <input type="checkbox" [(ngModel)]="usePython" class="w-5 h-5" />
       <label class="font-medium">Use Python microservice</label>
     </div>
 
-    <!-- Generate Button -->
+    <!-- Generate -->
     <button
       (click)="generateQr()"
       class="w-full bg-black text-white py-4 rounded-xl text-lg font-medium hover:bg-gray-900 transition"
@@ -101,43 +80,32 @@
 
   </div>
 
-  <!-- Preview -->
-  <div *ngIf="qrImage" class="mt-12 text-center">
+  <!-- RIGHT: QR Preview -->
+  <div *ngIf="qrImage" class="flex flex-col items-center text-center">
 
-    <h3 class="text-xl font-medium mb-4">Generated QR Code</h3>
+    <h3 class="text-xl font-medium mb-4">Preview</h3>
 
-    <img
-      [src]="qrImage"
-      alt="QR Code"
-      class="mx-auto shadow-lg rounded-xl border border-gray-200 p-4"
-    />
+    <div class="p-6 border border-gray-200 rounded-xl shadow-md bg-white">
+      <img [src]="qrImage" alt="QR" class="max-w-xs mx-auto rounded-xl" />
+    </div>
 
-    <!-- Download Buttons -->
-    <div class="flex justify-center gap-6 mt-6">
-      <button
-        (click)="download('png')"
-        class="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-900"
-      >
+    <!-- Download buttons -->
+    <div class="flex gap-4 mt-6">
+      <button (click)="download('png')" class="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-900">
         PNG
       </button>
 
-      <button
-        (click)="download('svg')"
-        class="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-900"
-      >
+      <button (click)="download('svg')" class="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-900">
         SVG
       </button>
 
-      <button
-        (click)="download('pdf')"
-        class="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-900"
-      >
+      <button (click)="download('pdf')" class="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-900">
         PDF
       </button>
     </div>
 
   </div>
 
-
-
 </div>
+
+
