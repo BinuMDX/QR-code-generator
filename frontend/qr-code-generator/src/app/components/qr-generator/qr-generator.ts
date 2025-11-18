@@ -15,6 +15,7 @@ export class QRGenerator {
   usePython = true;
   qrImage: string | null = null;
   logoFile: File | null = null;
+  latestMeta: any = null;
 
   options: QROptions = {
     fill_color: '#000000',
@@ -26,6 +27,12 @@ export class QRGenerator {
   history: any;
 
   constructor(private qrService: QrService,  private historyService: History) {}
+
+  onGenerated(payload: any) {
+    this.qrImage = payload.image;
+    this.latestMeta = payload.meta;
+    this.history.addToHistory({ image: payload.image, data: payload.meta });
+  }
 
   onFileSelected(event: any) {
     this.logoFile = event.target.files[0];
@@ -64,6 +71,12 @@ download(type: string) {
   else if (type === 'svg') FileUtils.exportAsSVG(this.qrImage);
   else if (type === 'pdf') FileUtils.exportAsPDF(this.qrImage);
 }
+
+ openDesigner() {
+    // navigate to designer and pass current QR — simple approach: store in localStorage or via service
+    localStorage.setItem('designer_qr', this.qrImage || '');
+    // this.router.navigate(['/designer']);
+  }
 
 
 }

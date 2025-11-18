@@ -10,6 +10,8 @@ import { QRGenerator } from './components/qr-generator/qr-generator';
 import { QRHistory } from './components/qr-history/qr-history';
 import { QRPreview } from './components/qr-preview/qr-preview';
 import { QRDesigner } from './components/qr-designer/qr-designer';
+import { Header } from './components/header/header';
+import { Sidebar } from './components/sidebar/sidebar';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { QRDesigner } from './components/qr-designer/qr-designer';
     QRGenerator,
     QRHistory,
     QRPreview,
-    QRDesigner
+    QRDesigner,
+    Header,
+    Sidebar
   ],
   imports: [
     BrowserModule,

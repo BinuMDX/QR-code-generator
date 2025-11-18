@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+/* stylelint-disable scss/at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable scss/at-rule-no-unknown */
+
+/* Design tokens */
+$bg: #ffffff;
+$text: #111111;
+$subtle-text: #6e6e6e;
+$border: #e5e5e5;
+$card-bg: #fafafa;
+$radius: 16px;
+
+/* base styles */
+html, body {
+  /* stylelint-disable-next-line scss/at-rule-no-unknown */
+  @apply bg-bg text-text;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.card {
+  /* stylelint-disable-next-line scss/at-rule-no-unknown */
+  @apply bg-card rounded-2xl shadow-soft p-6;
+}
+
+/* small helpers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
